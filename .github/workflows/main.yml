@@ -5,7 +5,7 @@ on:
       - main
 
 jobs:
-  install_node_test:
+  Job1_install_node_test:
     runs-on: ubuntu-latest
     steps:
       - name: Step 1 Checkout Code
@@ -16,4 +16,13 @@ jobs:
           node-version: '18'
       - name: Print My Name
         run: echo "Jeerawat"
-    
+  Job2_test:
+    needs: Job1_install_node_test
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Setup Node v18
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      - name: Print Greeting
+        run: echo "Hello World"
