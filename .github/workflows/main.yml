@@ -1,0 +1,19 @@
+name: This is first CI
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  install_node_test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Step 1 Checkout Code
+        uses: actions/checkout@v4
+      - name: Step 2 Setup Node v18
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      - name: Print My Name
+        run: echo "Jeerawat"
+    
