@@ -23,4 +23,4 @@ jobs:
       - name: Salesforce Authen
         run: sf org login jwt --client-id ${{ secrets.JWT_TOKEN }} --jwt-key-file "private.Key" --username teerac35@comexpert.co.th.demodev --alias my-org --instance-url https://test.salesforce.com
       - name: Where am i 
-        run: ${{echo pwd}}
+        run: pwd | ls -lah
