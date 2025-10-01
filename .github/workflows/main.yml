@@ -5,9 +5,11 @@ on:
       - main
 
 jobs:
-  InstallNode_And_Salesforce:
+  Install_Node_And_Salesforce:
     runs-on: ubuntu-latest
     steps: 
+      - name: Checkout Code
+        uses: actions/checkout@v4
       - name: Install Node v20
         uses: actions/setup-node@v4
         with:
@@ -19,5 +21,6 @@ jobs:
       - name: Create Private Key
         run: echo "${{ secrets.P_KEY }}" >> private.Key
       - name: Salesforce Authen
-        run:  sf org login jwt --client-id ${{ secrets.JWT_TOKEN }} --jwt-key-file "private.Key" --username teerac35@comexpert.co.th.demodev --alias my-org --instance-url https://test.salesforce.com
- 
+        run: sf org login jwt --client-id ${{ secrets.JWT_TOKEN }} --jwt-key-file "private.Key" --username teerac35@comexpert.co.th.demodev --alias my-org --instance-url https://test.salesforce.com
+      - name: Where am i 
+        run: ${{echo pwd}}
