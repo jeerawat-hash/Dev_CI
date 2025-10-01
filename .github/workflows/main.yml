@@ -1,28 +1,20 @@
-name: This is first CI
+name: Salesforce Deploy
 on:
   push:
     branches:
       - main
 
 jobs:
-  Job1_install_node_test:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Step 1 Checkout Code
-        uses: actions/checkout@v4
-      - name: Step 2 Setup Node v18
-        uses: actions/setup-node@v4
-        with:
-          node-version: '18'
-      - name: Print My Name
-        run: echo "Jeerawat"
-  Job2_test:
-    needs: Job1_install_node_test
+  InstallNode_And_Salesforce:
     runs-on: ubuntu-latest
     steps: 
-      - name: Setup Node v18
+      - name: Install Node v20
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
-      - name: Print Greeting
-        run: echo "Hello World"
+          node-version: '20'
+      - name: Print My Name
+        run: echo "Jeerawat"
+      - name: Install Salesforce
+        run: npm install @salesforce/cli --global
+      - name: Salesforce Pring Core
+        run: sf plugins --core
