@@ -12,9 +12,12 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - name: Print My Name
-        run: echo "Jeerawat"
       - name: Install Salesforce
         run: npm install @salesforce/cli --global
       - name: Salesforce Pring Core
         run: sf plugins --core
+      - name: Create Private Key
+        run: echo "${{ secrets.P_KEY }}" >> private.Key
+      - name: Salesforce Authen
+        run:  sf org login jwt --client-id ${{ secrets.JWT_TOKEN }} --jwt-key-file "private.Key" --username teerac35@comexpert.co.th.demodev --alias my-org --instance-url https://test.salesforce.com
+ 
